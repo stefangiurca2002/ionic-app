@@ -1,0 +1,7 @@
+{
+  "name": "mediaApplication",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
