@@ -1,0 +1,23 @@
+<ion-content>
+<h1 *ngIf="!lobbys.length"> say hi to someone!</h1>
+<div class="container-fluid">
+    <div class="row" *ngFor="let lob of lobbys">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10 text-center" (click)="navigate('home/loby/message', lob.userName)">
+            <div class="profile-image">
+            <img src="http://192.168.1.8/mediaApp-BackEnd/uploads/ProfileImages/{{lob.profileImage}}" alt="nu ete">
+            </div>
+            {{lob.userName}}
+            {{lob.lastMessage}}
+            <p *ngIf="lob.messagesNr > 0">{{lob.messagesNr}}</p>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+<ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "518963214604",
+    "firebase_url": "https://notifications-aee7f.firebaseio.com",
+    "project_id": "notifications-aee7f",
+    "storage_bucket": "notifications-aee7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518963214604:android:89372b61141d5b055a3129",
+        "android_client_info": {
+          "package_name": "com.media.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518963214604-sa64bp4qf3bbd6bs98u765798murt04q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhVh6ywsZcPBH34luJHqgdjInN88kHNaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518963214604-sa64bp4qf3bbd6bs98u765798murt04q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "518963214604-srovdtn50crta82t6qeqtujssfb29mdu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.ionic.starter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518963214604:android:b0b73aadbefff8915a3129",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518963214604-sa64bp4qf3bbd6bs98u765798murt04q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhVh6ywsZcPBH34luJHqgdjInN88kHNaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518963214604-sa64bp4qf3bbd6bs98u765798murt04q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "518963214604-srovdtn50crta82t6qeqtujssfb29mdu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.ionic.starter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

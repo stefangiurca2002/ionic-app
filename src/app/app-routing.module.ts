@@ -1,16 +1,35 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PageNotfound } from './404/404.component';
+import { MenuComponent } from './menu/menu.component';
+import { AuthGuard } from './auth.guard';
+import { FirstNavigationComponent } from './firstNavigation/firstNavigation.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+   path: '',
+   component: FirstNavigationComponent,
+   pathMatch:'full'
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
+  {
+    path: 'create',
+    loadChildren: './createAcount/createAcount.module#CreateAcountModule'
+  },
+   {
+  
+       path: 'home',
+       canActivate: [AuthGuard],
+       component: MenuComponent,
+       loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+   },
+ {
+   path: '**',
+   component: PageNotfound
+}
 ];
 
 @NgModule({

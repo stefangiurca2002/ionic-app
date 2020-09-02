@@ -1,7 +1,8 @@
 {
   "name": "mediaApplication",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

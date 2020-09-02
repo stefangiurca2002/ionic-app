@@ -1,0 +1,20 @@
+<ion-content>
+    <div *ngIf="url" class="text-center">
+        <ion-slides>
+            <ion-slide>
+        <img #image
+        (swipeleft)="onSwipeLeft()"
+        (swiperight)="onSwipeRight()"
+             class="post"
+             [src]="url" 
+             alt="nu ete">
+             </ion-slide>
+             </ion-slides>
+
+             <p>likes: {{Content[id].likes}}</p>
+             <p>dislikes: {{Content[id].dislikes}}</p>
+             <p>rate: {{Content[id].rate}}</p>
+             
+         
+    </div>
+</ion-content>

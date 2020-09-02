@@ -1,0 +1,11 @@
+<ion-content>
+    <div>
+        <h1 *ngFor="let comment of comments">{{comment.userName}} : {{comment.comment}}</h1>
+     </div>
+     <ion-infinite-scroll threshold="5%" (ionInfinite)="loadComments($event)">
+        <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>

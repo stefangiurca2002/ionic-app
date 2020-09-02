@@ -1,0 +1,57 @@
+<ion-content>
+<div class="row content" *ngFor="let image of friendsPosts">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div *ngIf="isImageFormat(image.PostName)">
+            <img src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{image.userName}}/{{image.PostName}}"
+                [ngStyle]="{'Visibility': !LoadedImage[image.PostName] ? 'hidden' : 'visible'}"
+                (load)='hideLoader(image.PostName)' (error)='hideLoader(image.PostName)' alt="nu este">
+            <div *ngIf="!LoadedImage[image.PostName]" class="spinner-border"></div>
+        </div>
+        <video class="embed-responsive embed-responsive-21by9" *ngIf="!isImageFormat(image.PostName)" controls autoplay>
+            <source class="embed-responsive-item"
+                src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{image.userName}}/{{image.PostName}}" type="video/mp4">
+            <source class="embed-responsive-item"
+                src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{image.userName}}/{{image.PostName}}" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+            <div class="FieldStars" title="RatingValue" *ngIf="!liked[image.PostName]">
+                {{image.likes}}<ion-icon (click)="rate(image,1,0)" name="star-outline"></ion-icon>
+            </div>
+            <div class="FieldStars" title="RatingValue" *ngIf="liked[image.PostName]">
+                {{image.likes}}<ion-icon (click)="rate(image,0,0 )" name="star-sharp"></ion-icon>
+            </div>
+            <div class="FieldStars" title="RatingValue" *ngIf="!disliked[image.PostName]">
+                {{image.dislikes}}<ion-icon (click)="rate(image,0,1)" name="star-outline"></ion-icon>
+            </div>
+            <div class="FieldStars" title="RatingValue" *ngIf="disliked[image.PostName]">
+                {{image.dislikes}}<ion-icon (click)="rate(image,0,0)" name="star-sharp"></ion-icon>
+            </div>
+            <br>
+            <!-- <p class="rate">likes: {{image.likes}}</p>
+            <p class="rate">dislikes: {{image.dislikes}}</p> -->
+            <!-- <p class="rate">rate: {{aprox(image.rate)}}</p> -->
+            <div class="text-center" (click)="showComments(image)" > show comments </div>
+            <!-- <div class="comment-area" *ngIf="displayComments[image.url]">
+                <div class="test-center" (click)="hideComments(image.url)">hide comments</div>
+                <div class="comments">
+                     <p *ngFor="let ind of comments[image.url]">{{ind.userName}} : {{ind.comment}}</p>
+                </div>
+                <form [formGroup]='MessageForm'>
+                    <div formArrayName='messageInput'>
+                    <input type="text" [formControlName]='image.index' class="form-control" [ngClass]="{'is-invalid': !this.MessageForm.get('messageInput').valid}">
+                    </div>
+                    <button (click)="publicComment(image)">send</button>
+                </form>
+               
+            </div> -->
+    </div>
+    <div class="col-2"></div>
+</div>
+<ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

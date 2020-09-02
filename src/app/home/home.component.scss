@@ -1,0 +1,39 @@
+.image{
+ text-align: center;
+}
+
+.profile{
+    border-radius: 80px;
+}
+
+.content{
+    margin-bottom: 20px;
+}
+.rating{
+    text-align: center;
+}
+ .FieldStars{
+     overflow: hidden;
+     height: 18px;
+     display: inline-block;
+     margin: auto;
+ }
+ .EmptyStars{
+     direction: rtl;
+     overflow: hidden;
+     height: 18px;
+     display: inline-block;
+ }
+    
+.profile-image{
+    display: block;
+    // margin-left: auto;
+    // margin-right: auto;
+    margin: auto;
+    margin-top: 10px;
+    overflow: hidden;
+    background-color: black;
+     width: 60px;
+     height: 60px;
+  border-radius: 100% ;
+}

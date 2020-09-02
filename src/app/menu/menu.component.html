@@ -1,0 +1,62 @@
+<ion-menu side="start" content-id="main-content">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="navigate('home')">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>home</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('home/explore')">
+          <ion-icon name="search-circle" slot = "start"></ion-icon>
+          <ion-label>explore</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('home/post')">
+          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+          <ion-label>Favorites</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('home/tranding')">
+          <ion-icon slot="start"></ion-icon>
+          <ion-label>Archived</ion-label>
+        </ion-item>
+        <ion-item (click)="navigate('home/new')">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          <ion-label>Trash</ion-label>
+        </ion-item>
+        <ion-item (click) = "navigate('home/loby')">
+          <ion-icon name="warning" slot="start"></ion-icon>
+          <ion-label>Spam</ion-label>
+        </ion-item>
+        <ion-item (click)="logout()">
+          <ion-icon name="exit-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="text-center">
+          <h6>{{title}}</h6>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="notify text-center" *ngIf="canNotify" style="background-color: white; z-index: 1; position: fixed; width: 100%;">
+                 <h1>{{notification.user}}: {{notification.msg}}</h1> 
+      </div>
+      <div *ngIf="logoutTriggered" class="logout">
+        <h1>logout confirm:</h1>
+        <button class="btn btn-primary" (clcik)='logoutConfirmation(false)'>cance</button>
+        <button class='btn btn-danger' (clcik)='logoutConfirmation(true)'>ok</button>
+      </div>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </div>

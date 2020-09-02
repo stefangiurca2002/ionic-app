@@ -1,0 +1,23 @@
+<ion-content>
+    
+    <div class="messages">
+        <div *ngFor="let msg of messages">
+            <h1 *ngIf="unSeen(msg)" class="text-center">unseen messages</h1>
+            <h1 *ngIf="msg.you" style="text-align: end;">{{msg.you}} </h1>
+            <h1 *ngIf="msg.user" style="text-align: start;">{{msg.user}}</h1>
+            {{msg.date}}
+        </div>
+           </div>
+    
+    <div style="position: fixed; bottom: 0;">
+    <input type="text" [(ngModel)]="text">
+    <button (click)="onSubmit()">send</button>
+    </div>
+    
+    <ion-infinite-scroll threshold="5%" (ionInfinite)="loadMessages($event)" position='top'>
+        <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</ion-content>

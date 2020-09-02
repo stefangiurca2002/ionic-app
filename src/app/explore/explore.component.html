@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="container-fluid">
+    <input type="text" placeholder="Search user" [(ngModel)]="SearchUser" (ngModelChange)='SearchInputCahnged($event)'>
+    {{SearchUser}}
+    <h1 >users:</h1>
+    <div class="row" *ngFor="let user of usersAccounts">
+        <div class="col-4"><div class="profileImage">
+          <img src="http://192.168.1.8/mediaApp-BackEnd/uploads/ProfileImages/{{user.ProfileImage}}" alt="nu ete" >
+        </div></div>
+        <div class="col-5 profile-area" (click)="exploreUser(user.userName)">
+            <h4 class="text-center">{{user.userName}}</h4>
+            <h6 class="text-center">from: {{user.country}}</h6>
+        </div>
+        <div class="col-3">
+          <button *ngIf="!friendsrequest[user.userName]" class="btn btn-primary" (click) = addFriend(user.userName)>add</button>
+          <button *ngIf="friendsrequest[user.userName]" class="btn btn-danger" (click)="removeFriend(user.userName)">remove</button>
+        </div>
+    </div>
+</div>
+<ion-infinite-scroll threshold="5%" (ionInfinite)="loadUsers($event)">
+  <ion-infinite-scroll-content
+  loadingSpinner="bubbles"
+  loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

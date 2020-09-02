@@ -1,0 +1,75 @@
+<h1 class="text-center" *ngIf="EmptyAccount"> {{EmptyAccount}}</h1>
+    <div class="row content" *ngFor="let image of imagesUrl">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div *ngIf="isImageFormat(image.url)">
+                <img src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{image.url}}"
+                    [ngStyle]="{'Visibility': !LoadedImage[image.url] ? 'hidden' : 'visible'}"
+                    (load)='hideLoader(image.url)' (error)='hideLoader(image.url)' alt="nu este">
+                <div *ngIf="!LoadedImage[image.url]" class="spinner-border"></div>
+            </div>
+            <video class="embed-responsive embed-responsive-21by9" *ngIf="!isImageFormat(image.url)" controls autoplay>
+                <source class="embed-responsive-item"
+                    src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{image.url}}" type="video/mp4">
+                <source class="embed-responsive-item"
+                    src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{image.url}}" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+                <div class="FieldStars" title="RatingValue" *ngIf="!liked[image.url]">
+                    {{image.likes}}<ion-icon (click)="rate(image,1,0)" name="star-outline"></ion-icon>
+                </div>
+                <div class="FieldStars" title="RatingValue" *ngIf="liked[image.url]">
+                    {{image.likes}}<ion-icon (click)="rate(image,0,0 )" name="star-sharp"></ion-icon>
+                </div>
+                <div class="FieldStars" title="RatingValue" *ngIf="!disliked[image.url]">
+                    {{image.dislikes}}<ion-icon (click)="rate(image,0,1)" name="star-outline"></ion-icon>
+                </div>
+                <div class="FieldStars" title="RatingValue" *ngIf="disliked[image.url]">
+                    {{image.dislikes}}<ion-icon (click)="rate(image,0,0)" name="star-sharp"></ion-icon>
+                </div>
+                <br>
+                <!-- <p class="rate">likes: {{image.likes}}</p>
+                <p class="rate">dislikes: {{image.dislikes}}</p> -->
+                <p class="rate">rate: {{aprox(image.Rating)}}</p>
+                <div class="text-center" (click)="showComments(image)" > show comments </div>
+                <!-- <div class="comment-area" *ngIf="displayComments[image.url]">
+                    <div class="test-center" (click)="hideComments(image.url)">hide comments</div>
+                    <div class="comments">
+                         <p *ngFor="let ind of comments[image.url]">{{ind.userName}} : {{ind.comment}}</p>
+                    </div>
+                    <form [formGroup]='MessageForm'>
+                        <div formArrayName='messageInput'>
+                        <input type="text" [formControlName]='image.index' class="form-control" [ngClass]="{'is-invalid': !this.MessageForm.get('messageInput').valid}">
+                        </div>
+                        <button (click)="publicComment(image)">send</button>
+                    </form>
+                   
+                </div> -->
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+<!-- 
+<div *ngIf="!verticalView" class="row">
+    <div class="col-4 content" *ngFor="let img of imagesUrl">
+        <img *ngIf="isImageFormat(img.url)" src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{img.url}}"
+            [ngStyle]="{'Visibility': LoadedImage ? 'hidden' : 'visible'}" (load)='hideLoader()' (error)='hideLoader()'
+            alt="nu este">
+            <div *ngIf="!isImageFormat(img.url)" class="video-area">
+                <video class="embed-responsive embed-responsive-21by9">
+                    <source class="embed-responsive-item"
+                        src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{img.url}}" type="video/mp4">
+                    <source class="embed-responsive-item"
+                        src="http://192.168.1.8/mediaApp-BackEnd/uploads/{{userName}}/{{img.url}}" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <button class="btn-primary play">play</button>
+             </div>
+    </div>
+</div> -->
+<ion-infinite-scroll threshold="5%" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>

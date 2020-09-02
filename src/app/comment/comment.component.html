@@ -1,0 +1,9 @@
+<ion-content>
+    <button (click)='back()'>back</button>
+    <form [formGroup]='MessageForm'>
+        <input type="text" formControlName='messageControl' class="form-control" [ngClass]="{'is-invalid': !this.MessageForm.get('messageControl').valid}">
+        <button (click)="publicComment()">send</button>
+    </form>
+<app-comments-content [comments]='comments'
+                      (moreComments)="loadComments()"></app-comments-content>
+</ion-content>

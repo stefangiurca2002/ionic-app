@@ -1,0 +1,47 @@
+<ion-content>
+<h1 class="text-center">login</h1>
+
+<!-- <form [formGroup] = "customerForm"
+      (submit)="onSubmit()">
+
+    <div class="form-group">
+        <label for="userName">user name</label>
+        <input type="text" 
+               class="form-control" 
+               id="userName" 
+               placeholder="Enter user name"
+               formControlName="userName"
+               [ngClass]="{'is-invalid': customerForm.get('userName').invalid && 
+                                         (customerForm.get('userName').dirty ||
+                                          customerForm.get('userName').touched ||
+                                          FormSubmited)}">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+               class="form-control" 
+               id="password" 
+               placeholder="Password"
+               formControlName= 'password'
+               [ngClass]="{'is-invalid': customerForm.get('password').invalid && 
+                                         (customerForm.get('password').dirty ||
+                                          customerForm.get('password').touched ||
+                                          FormSubmited)}"
+               >
+      </div>
+      <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <br>
+      </div>
+</form>
+
+<label for="createAcount">Don't have allready an account?</label> <br>
+<button class="btn btn-primary" [routerLink]="['/create']"> create account</button> -->
+<button (click)="signupWithGoogle()" *ngIf="!createAccount">google</button>
+<div *ngIf="createAccount">
+  <h1>please create a user Name for your account</h1>
+  <input type="text" [(ngModel)]="createUserName" [ngClass]="{'is-invalid': invalidUserName}">{{createUserName}}
+  <span *ngIf="invalidUserName">this user name is allready token</span>
+  <button (click)="verifyUserName()">create</button>
+</div>
+</ion-content>

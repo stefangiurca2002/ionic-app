@@ -1,0 +1,6 @@
+<form [formGroup]="formContentPost" (ngSubmit)="onSubmit()">
+    <input type="file" 
+           FormControlName="imageName"
+           (change)="SelectImage($event)">
+    <button type="submit">post</button>
+</form>

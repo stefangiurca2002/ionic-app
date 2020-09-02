@@ -1,0 +1,84 @@
+
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+            </div>
+            <div class="col-3"></div>
+        </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="text-center">
+                <!-- <p style="margin-top: 20px;">Posts:  {{PostsNumber}}</p>
+                <p>followers: follow:</p> -->
+                <br>
+                <span>Posts:  {{PostsNumber}}</span>
+                <br>
+                <span (click)="displayFollows()">follow:  {{follow}}</span>
+                <br>
+                <span (click)="displayFollowers()">followers:  {{followers}}</span>
+            </div>
+        </div>
+        <div class="col-4 image">
+                    <div class="profile-image">
+                        <img [src]="ImageProfile" alt="nu este" class="profile">
+                    </div>
+                    <div *ngIf="canChangeProfileImage">
+                      <label for="upload" *ngIf="isBrowser">
+                        <ion-icon name="aperture-outline"></ion-icon>
+                            <input type="file" accept="image" id="upload" style="display:none" (change)="changeProfileImage($event)">
+                      </label> 
+                      <ion-icon *ngIf="!isBrowser" name="aperture-outline" (click)="selectImage()"></ion-icon>
+                    </div>
+                    <div *ngIf="!canChangeProfileImage">
+                         <button [routerLink]="['loby/message']" (click)="setUserTrigerred()">message</button>
+                    </div>
+                    </div>
+        <div class="col-4">
+            <div class="text-center">
+                <h4 style="margin-top: 20px;">rating</h4>
+                {{RatingValue}}
+            </div>
+            <div class="rating">
+                <div class="FieldStars" [style.width.px]="RatingValue*16" title="RatingValue">
+                     <div class="crop" style="width: 80px;">
+                        <ion-icon name="star-sharp"></ion-icon>
+                        <ion-icon name="star-sharp"></ion-icon>
+                        <ion-icon name="star-sharp"></ion-icon>
+                        <ion-icon name="star-sharp"></ion-icon>
+                        <ion-icon name="star-sharp"></ion-icon>
+                     </div>
+                </div>
+                <div class="EmptyStars" [style.width.px]="(5-RatingValue)*16 " tab="5-RatingValue">
+                    <div  style="width: 80px; ">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ion-content>
+<app-home-content 
+                  (sendProfileRating)="UpdateRating($event)" 
+                  (sendProfilePostsNumber)="getProfilePostsNumber($event)"
+                  ></app-home-content>
+     </ion-content>
+<!-- <ion-tabs>
+     Tab bar 
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="vertical" (click)="setVerticalView()">
+        <ion-icon *ngIf="!verticalView" name="ellipsis-vertical-outline"></ion-icon>
+        <ion-icon *ngIf="verticalView" name="ellipsis-vertical-sharp"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="horizontal" (click)="setHorizontalView()">
+        <ion-icon *ngIf="verticalView" name="ellipsis-horizontal-outline"></ion-icon>
+        <ion-icon *ngIf="!verticalView" name="ellipsis-horizontal-sharp"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> -->
